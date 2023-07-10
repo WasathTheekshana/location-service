@@ -7,7 +7,10 @@ const locationSchema = new mongoose.Schema({
   },
   address: { type: String },
   phone: { type: String },
-  devices: [{ type: mongoose.Schema.Types.ObjectId, ref: "Device" }],
+  devices: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Device",
+  }],
 });
 
 export default mongoose.model("Location", locationSchema);
