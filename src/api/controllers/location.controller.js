@@ -1,4 +1,3 @@
-import express from "express";
 import LocationModel from "../../models/location.model.js";
 
 // Add a new location
