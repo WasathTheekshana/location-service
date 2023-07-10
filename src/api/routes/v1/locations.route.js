@@ -14,5 +14,11 @@ router.route("/:id").get(getLocationById);
 router.route("/addLocation").post(addLocation);
 router.route("/updateLocation/:id").put(updateLocation);
 router.route("/deleteLocation/:id").delete(deleteLocation);
+router
+  .route("/deleteLocation/")
+  .delete((req, res) =>
+    res.status(500).send({ error: "Location ID is required." })
+  );
+
 
 export default router;
