@@ -7,11 +7,15 @@ import LocationCard from "./LocationCard";
 import Error from "./Error";
 import Loading from "./Loading";
 import AddLocationModel from "../models/AddLocation.model";
+import { Toaster, toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 const AllLocations = () => {
   const [locations, setLocations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isAddLocationModelOpen, setIsAddLocationModelOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchLocations();
@@ -28,12 +32,17 @@ const AllLocations = () => {
     }
   };
 
+  const locationPage = () => {
+    navigate("/");
+  };
+
   if (isLoading) {
     return <Loading />;
   }
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <AddLocationModel isOpen={isAddLocationModelOpen} />
       <Heading
         mainHeading="Locations"
@@ -47,7 +56,13 @@ const AllLocations = () => {
         }
       />
 
-      <div className={locations.length == 0 ? `flex` : `flex flex-col md:grid md:grid-cols-3 gap-2`}>
+      <div
+        className={
+          locations.length == 0
+            ? `flex`
+            : `flex flex-col md:grid md:grid-cols-3 gap-2`
+        }
+      >
         {isLoading ? (
           <Loading />
         ) : locations.length > 0 ? (
@@ -57,7 +72,7 @@ const AllLocations = () => {
               name={location.name}
               address={location.address}
               phone={location.phone}
-              // onClick={() => console.log("Location 1")}
+              link={`/${location._id}`}
             />
           ))
         ) : (
