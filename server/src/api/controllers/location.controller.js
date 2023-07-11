@@ -62,19 +62,27 @@ export const updateLocation = async (req, res) => {
     if (!id) {
       return res.status(400).json({ message: "ID is required." });
     }
-    const body = req.body;
+    const { name, address, phone } = req.body;
 
-    const updateLocation = await LocationModel.findByIdAndUpdate(id, body);
-    if (updateLocation) {
-     return res.status(200).json({ message: "Location updated successfully." });   
+    // Check if name and address already exist in the database
+    const existingLocation = await LocationModel.findOne({ name, address });
+    if (existingLocation) {
+      return res.status(400).json({ message: "Location already exists." });
+    }
+
+    const update = { name, address, phone };
+    const updatedLocation = await LocationModel.findByIdAndUpdate(id, update);
+    if (updatedLocation) {
+      return res.status(200).json({ message: "Location updated successfully." });
     } else {
-        return res.status(400).json({ message: "Location not found!" });
+      return res.status(400).json({ message: "Location not found!" });
     }
 
   } catch (error) {
     return res.status(404).json({ message: "Location not found!" });
   }
 };
+
 
 // Delete a location by id
 export const deleteLocation = async (req, res) => {
