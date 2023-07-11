@@ -9,7 +9,7 @@ function Landing() {
       <div>
         <Logo 
           firstWord="Location"
-          secondWord="Service"
+          secondWord="Service."
         />
       </div>
       <AllLocations />
