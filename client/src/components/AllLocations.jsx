@@ -47,7 +47,7 @@ const AllLocations = () => {
         }
       />
 
-      <div className="flex flex-col md:flex-row gap-2">
+      <div className={locations.length == 0 ? `flex` : `flex flex-col md:grid md:grid-cols-3 gap-2`}>
         {isLoading ? (
           <Loading />
         ) : locations.length > 0 ? (
