@@ -24,3 +24,30 @@ export const addLocation = async (location) => {
         return Promise.reject({error: "Name & Address is already exist"});
     }
 }
+
+export const getLocationById = async (id) => {
+    try {
+        const response = await axios.get(`/locations/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteLocation = async (id) => {
+    try {
+        const response = await axios.delete(`/locations/deleteLocation/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateLocation = async (id, location) => {
+    try {
+        const response = await axios.put(`/locations/updateLocation/${id}`, location);
+        return Promise.resolve(response.data);
+    } catch (error) {
+        return Promise.reject({error: "Name & Address is already exist"});
+    }
+}
