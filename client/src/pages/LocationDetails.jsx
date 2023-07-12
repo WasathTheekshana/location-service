@@ -11,6 +11,8 @@ import Loading from "../components/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
 import AllDevices from "../components/AllDevices";
+import Error from "../components/Error";
+import NormalButton from "../components/buttons/NormalButton";
 
 const LocationDetails = () => {
   const [location, setLocation] = useState({});
@@ -37,6 +39,22 @@ const LocationDetails = () => {
 
   if (isLoading) {
     return <Loading />;
+  }
+
+  if (location === undefined) {
+    return (
+      <div>
+        <Logo 
+          firstWord="Location"
+          secondWord="Service."
+        />
+        <Loading />
+        <Error
+          heading="Location not found or Internal Server Error!"
+          description="Please check the correct URL or try again later."
+        />
+      </div>
+    );
   }
 
   return (
@@ -77,11 +95,8 @@ const LocationDetails = () => {
         />
       </div>
       <div>
-        <AllDevices 
-          locationId={location._id}
-        />
+        <AllDevices locationId={location._id} />
       </div>
-
     </Container>
   );
 };

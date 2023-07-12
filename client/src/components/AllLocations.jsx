@@ -9,6 +9,7 @@ import Loading from "./Loading";
 import AddLocationModel from "../models/AddLocation.model";
 import { Toaster, toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "./Logo";
 
 const AllLocations = () => {
   const [locations, setLocations] = useState([]);
@@ -38,6 +39,18 @@ const AllLocations = () => {
 
   if (isLoading) {
     return <Loading />;
+  }
+
+  if (locations === undefined) {
+    return (
+      <div>
+        <Loading />
+        <Error
+          heading="Server is not running!"
+          description="Please check the server or try again later."
+        />
+      </div>
+    );
   }
 
   return (
