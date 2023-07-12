@@ -2,6 +2,17 @@
 
 ## Start the Application
 
+### Docker
+
+you can use docker-compose to run the application
+
+```bash
+docker-compose up
+```
+
+- API will be hosted on port : `8080`
+- Frontend client application will host on port : `3000`
+
 ## Documents
 
 Click [here](https://documenter.getpostman.com/view/26690466/2s946chEzc) to view the API Document.  
