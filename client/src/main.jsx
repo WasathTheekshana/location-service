@@ -8,12 +8,14 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
+import Notfound from "./components/Notfound.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<Landing />} />
       <Route path="/:locationSlug" element={<LocationDetails />} />
+      <Route path="/:locationSlug/*" element={<Notfound />} />
     </Route>
   )
 );
