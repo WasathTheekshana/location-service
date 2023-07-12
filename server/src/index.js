@@ -2,7 +2,7 @@ import { app } from "./config/express.js";
 import { connect } from "./config/db.js";
 
 const PORT = process.env.PORT || 8080;
-const HOST = "localhost";
+const HOST = "0.0.0.0";
 
 connect()
   .then(() => {
