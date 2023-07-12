@@ -52,7 +52,7 @@ const UpdateLocationModel = ({isOpen, locationId, name, address, phone}) => {
   return (
     <Model>
         <div>
-        <h1 className="text-2xl">Add New Location</h1>
+        <h1 className="text-2xl">Update Location</h1>
       </div>
       <form
         onSubmit={formik.handleSubmit}

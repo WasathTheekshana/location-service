@@ -51,3 +51,23 @@ export const updateLocation = async (id, location) => {
         return Promise.reject({error: "Name & Address is already exist"});
     }
 }
+
+
+// -----------------Devices-----------------
+export const getDevices = async (locationId) => {
+    try {
+        const response = await axios.get(`/devices/?locationId=${locationId}`);
+        return Promise.resolve(response.data);
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
+
+export const addDevice = async (locationId, device) => {
+    try {
+        const response = await axios.post(`/devices/addDevice/?locationId=${locationId}`, device);
+        return Promise.resolve(response.data);
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}

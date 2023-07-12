@@ -9,6 +9,11 @@ import LocationDeleteModel from "../models/LocationDelete.model";
 import UpdateLocationModel from "../models/UpdateLocation.model";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
+import { AiOutlineDelete } from "react-icons/ai";
+import { GoPencil } from "react-icons/go";
+import Heading from "../components/Heading";
+import { AiOutlinePlus } from "react-icons/ai";
+import AllDevices from "../components/AllDevices";
 
 const LocationDetails = () => {
   const [location, setLocation] = useState({});
@@ -40,7 +45,10 @@ const LocationDetails = () => {
   return (
     <Container>
       <Logo firstWord="Location" secondWord="Service." />
-      <LocationDeleteModel isOpen={isDeleteModelOpen} locationId={locationSlug}/>
+      <LocationDeleteModel
+        isOpen={isDeleteModelOpen}
+        locationId={locationSlug}
+      />
       <UpdateLocationModel
         isOpen={isUpdateModelOpen}
         location={location._id}
@@ -58,17 +66,26 @@ const LocationDetails = () => {
           buttonOne={
             <RoundButton
               text="Update Location"
+              icon={<GoPencil />}
               onClick={() => setIsUpdateModelOpen(true)}
             />
           }
           buttonTwo={
             <RoundButton
               text="Delete Location"
+              icon={<AiOutlineDelete />}
               onClick={() => setIsDeleteModelOpen(true)}
             />
           }
         />
       </div>
+      <div>
+        
+        <AllDevices 
+          locationId={location._id}
+        />
+      </div>
+
     </Container>
   );
 };
