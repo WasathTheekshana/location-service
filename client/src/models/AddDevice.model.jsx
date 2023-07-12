@@ -78,6 +78,7 @@ const AddDeviceModel = ({isOpen, locationId}) => {
         <select
           {...formik.getFieldProps("type")}
        name='type' className='w-full border-black border rounded-lg py-2 pl-6'>
+          <option value="">Select Type</option>
           <option value="pos">POS</option>
           <option value="kisok">KISOK</option>
           <option value="signage">SIGNAGE</option>
@@ -85,7 +86,8 @@ const AddDeviceModel = ({isOpen, locationId}) => {
 
         <select 
           {...formik.getFieldProps("status")}
-        name='status' id='type' className='w-full border-black border rounded-lg py-2 pl-6'>
+        name='status' className='w-full border-black border rounded-lg py-2 pl-6'>
+          <option value="">Select Status</option>
           <option value={true}>Active</option>
           <option value={false}>Inactive</option>
         </select>
