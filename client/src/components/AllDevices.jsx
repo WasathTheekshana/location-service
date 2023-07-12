@@ -7,17 +7,33 @@ import Error from "./Error";
 import Loading from "./Loading";
 import { getDevices } from "../helper/helper";
 import AddDeviceModel from "../models/AddDevice.model";
+import { deleteDevice } from "../helper/helper";
+import { toast, Toaster } from "react-hot-toast";
 
 const AllDevices = ({ locationId }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [devices, setDevices] = useState([]);
   const [isAddDeviceModelOpen, setIsAddDeviceModelOpen] = useState(false);
 
+  const deleteDeviceById = async (locationId, deviceId) => {
+    try {
+      const response = await deleteDevice(locationId, deviceId);
+      toast.success("Device deleted successfully");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error deleting device:", error);
+      setIsLoading(false);
+    }
+  };
+
   const fetchDevices = async () => {
     try {
       const response = await getDevices(locationId);
       setDevices(response);
-      console.log(response);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching devices:", error);
@@ -35,7 +51,8 @@ const AllDevices = ({ locationId }) => {
 
   return (
     <div>
-        <AddDeviceModel isOpen={isAddDeviceModelOpen} locationId={locationId}/>
+      <Toaster position="top-center" reverseOrder={false} />
+      <AddDeviceModel isOpen={isAddDeviceModelOpen} locationId={locationId} />
       <Heading
         mainHeading="Devices"
         description="List of devices in this location"
@@ -60,15 +77,18 @@ const AllDevices = ({ locationId }) => {
           devices.map((device) => (
             <DeviceCard
               key={device._id}
+              locationId={locationId}
+              deviceId={device._id}
               serialNumber={device.serialNumber}
               type={device.type}
               status={device.status}
               image={device.image}
+              onClick={() => deleteDeviceById(locationId, device._id)}
             />
           ))
         ) : (
           <Error
-            title="No Devices Found"
+            heading="No Devices Found"
             description="Add a new device to this location"
           />
         )}
