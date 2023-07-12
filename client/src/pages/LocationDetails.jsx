@@ -7,12 +7,9 @@ import LocationsHeading from "../components/LocationsHeading";
 import RoundButton from "../components/buttons/RoundButton";
 import LocationDeleteModel from "../models/LocationDelete.model";
 import UpdateLocationModel from "../models/UpdateLocation.model";
-import Error from "../components/Error";
 import Loading from "../components/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
 import { GoPencil } from "react-icons/go";
-import Heading from "../components/Heading";
-import { AiOutlinePlus } from "react-icons/ai";
 import AllDevices from "../components/AllDevices";
 
 const LocationDetails = () => {
@@ -80,7 +77,6 @@ const LocationDetails = () => {
         />
       </div>
       <div>
-        
         <AllDevices 
           locationId={location._id}
         />
