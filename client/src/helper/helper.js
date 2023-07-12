@@ -71,3 +71,12 @@ export const addDevice = async (locationId, device) => {
         return Promise.reject(error);
     }
 }
+
+export const deleteDevice = async (locationId, deviceId) => {
+    try {
+        const response = await axios.delete(`/devices/?locationId=${locationId}&deviceId=${deviceId}`);
+        return Promise.resolve(response.data);
+    } catch (error) {
+        return Promise.reject(error);
+    }
+}
