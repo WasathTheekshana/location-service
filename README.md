@@ -13,6 +13,27 @@ docker-compose up
 - API will be hosted on port : `8080`
 - Frontend client application will host on port : `3000`
 
+## If docker didn't work for your
+
+#### Start the backend
+
+```bash
+cd server
+npm i
+npm start
+```
+
+#### Start the frontend
+
+```bash
+cd client
+npm i
+npm run dev
+```
+
+> Make sure to start the backend first. Unless data won't fetched into the frontend
+
+
 ## Documents
 
 Click [here](https://documenter.getpostman.com/view/26690466/2s946chEzc) to view the API Document.  
@@ -22,3 +43,7 @@ Click [here](https://www.figma.com/file/D0pBprWCJ8yOSlIlOdKEYe/Full-Stack-Develo
 
 ```client``` - Frontend application  
 ```server``` - Rest API
+
+Used `mongo-memory-server` as the database for this project. 
+> If the server restart, the data will be lost.
+
