@@ -106,7 +106,7 @@ const AddDeviceModel = ({ isOpen, locationId }) => {
         </select>
 
         <div className="flex gap-3 justify-start w-full">
-          <NormalButton text="Add Location" submit />
+          <NormalButton text="Add Device" submit />
           <NormalButton text="Cancel" isBorder onClick={handleClose} />
         </div>
       </form>
