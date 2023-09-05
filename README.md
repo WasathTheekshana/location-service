@@ -1,4 +1,4 @@
-# LayoutIndex Internship Assignment
+# Location Service
 
 ## Start the Application
 
