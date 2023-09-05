@@ -1,5 +1,7 @@
 # Location Service
 
+Location Service is a full stack applicaiton with stacked with MERN. This application can add location & devices.
+
 ## Start the Application
 
 ### Docker
